@@ -1,0 +1,12 @@
+<h1>User: <%= @user[:username] %></h1>
+
+<h2>Created Events:</h2>
+<% if @events.empty? %>
+        <p>No events.</p>
+    <% else %>
+        <ul>
+            <% @events.each do |event| %>
+                <li><%= event[:event_name] %></li>
+            <% end %>
+        </ul>
+<% end %>
