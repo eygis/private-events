@@ -26,3 +26,7 @@
  #content > div {
     margin: 1rem;
  }
+
+ li {
+   list-style-position: inside;
+ }
