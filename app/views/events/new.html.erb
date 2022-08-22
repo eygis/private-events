@@ -3,8 +3,8 @@
 <%= form_with model: @event do |f| %>
     <%= f.label :event_date, 'Event Date: ' %>
     <%= f.date_select :event_date %>
+    <br>
     <%= f.label :event_name, 'Event Name: ' %>
     <%= f.text_field :event_name, placeholder: 'enter event name' %>
-    <%= f.hidden_field :creator, :value => current_user[:id] %>
     <%= f.submit 'Submit' %>
 <% end %>
