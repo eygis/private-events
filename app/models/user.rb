@@ -8,4 +8,9 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   has_many :events, class_name: 'Event', foreign_key: 'user_id'
+
+  has_many :registrations
+
+  has_many :attended_events, through: :registrations, source: 'event'
+
 end

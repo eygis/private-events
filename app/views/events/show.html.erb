@@ -1,4 +1,17 @@
+<%= flash[:error] ? flash[:error] : nil %>
+<%= flash[:notice] ? flash[:notice] : nil %>
 <h1><%= @event.event_name %></h1>
 
 <p>Event Date: <%= @event.event_date %></p>
 <p>Organized by: <%= @event.creator.username %></p>
+
+<h2>Attending Guests:</h2>
+<% if @attendees.empty? %>
+        <p>No attendees.</p>
+ <% else %>
+    <% @attendees.each do |attendee| %>
+        <p><%= attendee[:username] %></p>
+    <% end %>
+<% end %>
+
+<%= button_to 'I will attend!', registrations_path(event_id: @event[:id]) %>

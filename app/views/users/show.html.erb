@@ -3,10 +3,33 @@
 <h2>Created Events:</h2>
 <% if @events.empty? %>
         <p>No events.</p>
-    <% else %>
-        <ul>
-            <% @events.each do |event| %>
-                <li><%= event[:event_name] %></li>
-            <% end %>
-        </ul>
+<% else %>
+    <% @events.each do |event| %>
+        <p><%= event[:event_name] %></p>
+    <% end %>
 <% end %>
+
+<h2>Registered Events:</h2>
+
+<div class='user_events'>
+    <div class='event_div'>
+        <h3>Past Events</h3>
+        <% if @attended_events.where('event_date < ?', Date.today).empty? %>
+            <p>No events.</p>
+        <% else %>
+            <% @attended_events.where('event_date < ?', Date.today).each do |event| %>
+                 <p><%= event[:event_name] %></p>
+            <% end %>
+        <% end %>
+    </div>
+    <div class='event_div'>
+        <h3>Upcoming Events</h3>
+        <% if @attended_events.where('event_date > ?', Date.today).empty? %>
+            <p>No events.</p>
+        <% else %>
+            <% @attended_events.where('event_date > ?', Date.today).each do |event| %>
+                 <p><%= event[:event_name] %></p>
+            <% end %>
+        <% end %>
+    </div>
+</div>
